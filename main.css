@@ -8,10 +8,18 @@
 
 .amount {
 	background-color: yellow;
-	border-radius: 10px;
+	border-radius: 10px 10px 0px 0px;
 	
 	display: inline-block;
 	height: 20px;
 	width: 20px;
 	text-align: center;
+}
+
+body {
+	height: 100vh;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: start;
 }
