@@ -9,26 +9,50 @@
 </head>
 <body>	
 	<article class="shopping-cart">
-		<section class="products-search-panel">
+		<section class="products-search-panel shopping-cart-section">
 			<section class="search-bar-panel">
 				<form class="search-bar">
-					<input type="text" name="searchterm" id="searchterm"/>
-					<input type="submit" value="Додати"/>
+					<input type="text" name="search-term" id="search-term" placeholder="Назва товару"/>
+					<input type="submit" value="Додати" id="submit-search"/>
 				</form>
 			</section>
 			<section class="products-list">
 				<section class="product-item"> 
-					<label class="product-title">Помідори</label>
+					<label class="product-title not-bought-product">Помідори</label>
 					<section class="product-amount">
-						<button class="product-amout-sub">-</button>
-						<span class="product-amount">2</span>
-						<button class="product-amout-add">+</button>
+						<span class="product-amount-value">2</span>
 					</section>
-					<button class="buy-btn">Куплено</button>
+					<section class="buy-btn-section">
+						<button class="buy-btn">Не куплено</button>
+					</section>
+				</section>
+				<section class="product-item"> 
+					<input class="product-title" value="Печиво"/>
+					<section class="product-amount">
+						<button class="product-amount-btn btn-sub">-</button>
+						<span class="product-amount-value">2</span>
+						<button class="product-amount-btn btn-add">+</button>
+					</section>
+					<section class="buy-btn-section">
+						<button class="buy-btn">Куплено</button>
+						<button class="cancel-btn">x</button>
+					</section>
+				</section>
+				<section class="product-item">
+					<input class="product-title" value="Сир"/>
+					<section class="product-amount">
+						<button class="product-amount-btn btn-sub editable-product-amount-btn">-</button>
+						<span class="product-amount-value">2</span>
+						<button class="product-amount-btn btn-add editable-product-amount-btn">+</button>
+					</section>
+					<section class="buy-btn-section">
+						<button class="buy-btn">Куплено</button>
+						<button class="cancel-btn">x</button>
+					</section>
 				</section>
 			</section>
 		</section>
-		<section class="statistics-panel">
+		<section class="statistics-panel shopping-cart-section">
 			<section class="statistics-header-panel">
 				<p class="statistics-header">Залишилося</p>
 			</section>
