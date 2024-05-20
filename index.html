@@ -7,10 +7,51 @@
 
     <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
-<body>
-	<span class="product-item">
-		Apple
-		<span class="amount">4</span>
-	</span>
+<body>	
+	<article class="shopping-cart">
+		<section class="products-search-panel">
+			<section class="search-bar-panel">
+				<form class="search-bar">
+					<input type="text" name="searchterm" id="searchterm"/>
+					<input type="submit" value="Додати"/>
+				</form>
+			</section>
+			<section class="products-list">
+				<section class="product-item"> 
+					<label class="product-title">Помідори</label>
+					<section class="product-amount">
+						<button class="product-amout-sub">-</button>
+						<span class="product-amount">2</span>
+						<button class="product-amout-add">+</button>
+					</section>
+					<button class="buy-btn">Куплено</button>
+				</section>
+			</section>
+		</section>
+		<section class="statistics-panel">
+			<section class="statistics-header-panel">
+				<p class="statistics-header">Залишилося</p>
+			</section>
+			<section class="statistics-items-panel">
+				<span class="statistics-item">
+					Печиво
+					<span class="amount">2</span>
+				</span>
+				<span class="statistics-item">
+					Сир
+					<span class="amount">1</span>
+				</span>
+			</section>
+			<section class="statistics-header-panel">
+				<p class="statistics-header">Куплено</p>
+			</section>
+			<section class="statistics-items-panel">
+				<span class="statistics-item">
+					Печиво
+					<span class="amount">2</span>
+				</span>
+			</section>
+		</section>
+	</article>
 </body>
 </html>
