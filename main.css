@@ -23,6 +23,8 @@ body {
 	justify-content: space-around;
 	align-items: flex-start;
 	background-color: var(--gray-color);
+	padding: 0px 0px 20px 0px;
+	border-radius: 5px;
 }
 
 .products-search-panel {
