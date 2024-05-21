@@ -6,10 +6,75 @@
     <title>My Page</title>
     <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
-<body>
-	<span class="product-item">
-		Apple
-		<span class="amount">4</span>
-	</span>
+<body>	
+	<article class="shopping-cart">
+		<section class="products-search-panel shopping-cart-section">
+			<section class="search-bar-panel">
+				<form class="search-bar">
+					<input type="text" name="search-term" id="search-term" placeholder="Назва товару"/>
+					<input type="submit" value="Додати" id="submit-search"/>
+				</form>
+			</section>
+			<section class="products-list">
+				<section class="product-item"> 
+					<label class="product-title strike-through">Помідори</label>
+					<section class="product-amount">
+						<span class="product-amount-value">2</span>
+					</section>
+					<section class="buy-btn-section">
+						<button class="buy-btn">Не куплено</button>
+					</section>
+				</section>
+				<section class="product-item"> 
+					<input class="product-title" value="Печиво"/>
+					<section class="product-amount">
+						<button class="product-amount-btn btn-sub">-</button>
+						<span class="product-amount-value">2</span>
+						<button class="product-amount-btn btn-add">+</button>
+					</section>
+					<section class="buy-btn-section">
+						<button class="buy-btn">Куплено</button>
+						<button class="cancel-btn">x</button>
+					</section>
+				</section>
+				<section class="product-item">
+					<input class="product-title" value="Сир"/>
+					<section class="product-amount">
+						<button disabled class="product-amount-btn btn-sub inactive-product-amount-btn">-</button>
+						<span class="product-amount-value">1</span>
+						<button class="product-amount-btn btn-add">+</button>
+					</section>
+					<section class="buy-btn-section">
+						<button class="buy-btn">Куплено</button>
+						<button class="cancel-btn">x</button>
+					</section>
+				</section>
+			</section>
+		</section>
+		<section class="statistics-panel shopping-cart-section">
+			<section class="statistics-panel-item statistics-header-panel">
+				<p class="statistics-header">Залишилося</p>
+			</section>
+			<section class="statistics-panel-item statistics-items-panel">
+				<span class="statistics-item">
+					Печиво
+					<span class="amount">2</span>
+				</span>
+				<span class="statistics-item">
+					Сир
+					<span class="amount">1</span>
+				</span>
+			</section>
+			<section class="statistics-panel-item statistics-header-panel">
+				<p class="statistics-header">Куплено</p>
+			</section>
+			<section class="statistics-panel-item statistics-items-panel">
+				<span class="statistics-item">
+					<span class="strike-through">Помідори</span>
+					<span class="amount">2</span>
+				</span>
+			</section>
+		</section>
+	</article>
 </body>
 </html>
