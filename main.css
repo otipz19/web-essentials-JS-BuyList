@@ -9,26 +9,13 @@ body {
 
 .amount {
 	background-color: yellow;
-<<<<<<< HEAD
-	border-radius: 10px 10px 0px 0px;
-	
-=======
 	border-radius: 10px;
->>>>>>> base-layout
 	display: inline-block;
 	height: 20px;
 	width: 20px;
 	text-align: center;
 }
 
-<<<<<<< HEAD
-body {
-	height: 100vh;
-	display: flex;
-	flex-direction: row;
-	align-items: flex-end;
-	justify-content: start;
-=======
 .shopping-cart {
 	width: 100%;
 	display: flex;
@@ -262,5 +249,41 @@ button:active:not([disabled]) {
 	font-size: 1.25rem;
 	font-weight: bolder;
 	margin: 10px 0px 10px 0px;
->>>>>>> base-layout
+}
+
+.badge{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: flex-start;
+	background-color: rgb(185, 5, 185);
+	position: fixed;
+	left: 0;
+	bottom: -40px;
+	margin-left: 20px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	padding: 10px;
+	gap: 10px;
+	color: #f4eeee;
+	transition: all 0.5s ease;
+	box-shadow: -2px -2px 3px 1px rgb(84, 0, 84);
+}
+
+.badge:hover{
+	transform: translateY(-40px);
+	background-color: blue;
+}
+
+.badge-title{
+	font-size: 1.25rem;
+	font-weight: bolder;
+}
+
+.badge-author-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: flex-start;
+	font-size: 0.75rem;
 }
