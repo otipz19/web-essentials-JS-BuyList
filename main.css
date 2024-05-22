@@ -1,6 +1,8 @@
 :root {
 	--gray-color: #dadada;
 	--blue-color: #3ab0f9;
+	--purple-color: rgb(185, 5, 185);
+	--white-color: #f4eeee;
 }
 
 body {
@@ -197,6 +199,10 @@ body {
 	font-weight: bolder;
 }
 
+button {
+	text-wrap: nowrap;
+}
+
 button:active:not([disabled]) {
 	box-shadow: none;
 	transform: translateY(2px);
@@ -264,7 +270,7 @@ button:active:not([disabled]) {
 	border-top-right-radius: 10px;
 	padding: 10px;
 	gap: 10px;
-	color: #f4eeee;
+	color: var(--white-color);
 	transition: all 0.5s ease;
 	box-shadow: -2px -2px 3px 1px rgb(84, 0, 84);
 }
@@ -293,7 +299,7 @@ button:active:not([disabled]) {
 		background-color: white;
 		color: black;
 		border-style: solid;
-		border-color: rgb(185, 5, 185);
+		border-color: var(--purple-color);
 		box-shadow: none;
 	}
 
@@ -344,3 +350,32 @@ button:active:not([disabled]) {
 		gap: 10px;
 	}
 }
+
+button[data-tooltip] {
+	position: relative; 
+}
+  
+button[data-tooltip]:not([disabled])::before {
+	content: attr(data-tooltip);
+	font-size: 0.75rem;
+	position: absolute;
+	bottom: 100%;
+	margin-bottom: 5px;
+	left:50%;
+	transform: translateX(-50%);
+	background-color: var(--purple-color);
+	color: var(--white-color);
+	padding: 5px 10px;
+	border-radius: 10px;
+	white-space: nowrap;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.3s ease;
+	pointer-events: none;
+}
+  
+button[data-tooltip]:not([disabled]):hover::before {
+	opacity: 1;
+	visibility: visible;
+}
+  

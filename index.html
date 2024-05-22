@@ -12,7 +12,7 @@
 			<section class="search-bar-panel">
 				<form class="search-bar">
 					<input type="text" name="search-term" id="search-term" placeholder="Назва товару"/>
-					<input type="submit" value="Додати" id="submit-search"/>
+					<button type="submit" id="submit-search" data-tooltip="Додати товар">Додати</button>
 				</form>
 			</section>
 			<section class="products-list">
@@ -22,31 +22,31 @@
 						<span class="product-amount-value">2</span>
 					</section>
 					<section class="buy-btn-section">
-						<button class="buy-btn">Не куплено</button>
+						<button class="buy-btn" data-tooltip="Відмінити покупку">Не куплено</button>
 					</section>
 				</section>
 				<section class="product-item"> 
 					<input class="product-title" value="Печиво"/>
 					<section class="product-amount">
-						<button class="product-amount-btn btn-sub">-</button>
+						<button class="product-amount-btn btn-sub" data-tooltip="Зменшити кількість">-</button>
 						<span class="product-amount-value">2</span>
-						<button class="product-amount-btn btn-add">+</button>
+						<button class="product-amount-btn btn-add" data-tooltip="Збільшити кількість">+</button>
 					</section>
 					<section class="buy-btn-section">
-						<button class="buy-btn">Куплено</button>
-						<button class="cancel-btn">x</button>
+						<button class="buy-btn" data-tooltip="Підтвердити покупку">Куплено</button>
+						<button class="cancel-btn" data-tooltip="Видалити товар">x</button>
 					</section>
 				</section>
 				<section class="product-item">
 					<input class="product-title" value="Сир"/>
 					<section class="product-amount">
-						<button disabled class="product-amount-btn btn-sub inactive-product-amount-btn">-</button>
+						<button disabled class="product-amount-btn btn-sub inactive-product-amount-btn" data-tooltip="Зменшити кількість">-</button>
 						<span class="product-amount-value">1</span>
-						<button class="product-amount-btn btn-add">+</button>
+						<button class="product-amount-btn btn-add" data-tooltip="Збільшити кількість">+</button>
 					</section>
 					<section class="buy-btn-section">
-						<button class="buy-btn">Куплено</button>
-						<button class="cancel-btn">x</button>
+						<button class="buy-btn" data-tooltip="Підтвердити покупку">Куплено</button>
+						<button class="cancel-btn" data-tooltip="Видалити товар">x</button>
 					</section>
 				</section>
 			</section>
