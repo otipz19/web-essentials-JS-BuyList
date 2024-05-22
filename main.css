@@ -358,10 +358,8 @@ button[data-tooltip] {
 button[data-tooltip]:not([disabled])::before {
 	content: attr(data-tooltip);
 	font-size: 0.75rem;
-	position: absolute;
-	bottom: 100%;
-	margin-bottom: 5px;
-	left:50%;
+	position: absolute;	
+	left: 50%; 
 	transform: translateX(-50%);
 	background-color: var(--purple-color);
 	color: var(--white-color);
@@ -370,12 +368,13 @@ button[data-tooltip]:not([disabled])::before {
 	white-space: nowrap;
 	visibility: hidden;
 	opacity: 0;
-	transition: all 0.3s ease;
+	transition: all 0.6s ease;
 	pointer-events: none;
 }
   
 button[data-tooltip]:not([disabled]):hover::before {
 	opacity: 1;
 	visibility: visible;
+	transform: translateY(-155%) translateX(-50%);
 }
   
