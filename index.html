@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="uk">
-    <meta charset="UTF-8">
-	<meta name="viewport" content="width:device-widht; initial-scale:1"/>
-    <title>My Page</title>
-    <link rel="stylesheet" type="text/css" href="main.css" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width:device-widht; initial-scale:1" />
+	<title>My Page</title>
+	<link rel="stylesheet" type="text/css" href="main.css" />
 </head>
-<body>	
+
+<body>
 	<article class="shopping-cart">
 		<section class="products-crud-panel shopping-cart-section">
 			<section class="create-product-container">
 				<form class="create-product-bar">
-					<input type="text" name="new-product-name" id="new-product-name" placeholder="Назва товару"/>
+					<input type="text" name="new-product-name" id="new-product-name" placeholder="Назва товару" />
 					<button type="submit" id="submit-create" data-tooltip="Додати товар">Додати</button>
 				</form>
 			</section>
 			<section class="products-list">
-				<section class="product-list-item"> 
+				<section class="product-list-item">
 					<label class="product-title strike-through">Помідори</label>
 					<section class="product-amount">
 						<span class="product-amount-value">2</span>
@@ -25,8 +27,8 @@
 						<button class="buy-btn" data-tooltip="Відмінити покупку">Не куплено</button>
 					</section>
 				</section>
-				<section class="product-list-item"> 
-					<input class="product-title" value="Печиво"/>
+				<section class="product-list-item">
+					<input class="product-title" value="Печиво" />
 					<section class="product-amount">
 						<button class="product-amount-btn btn-sub" data-tooltip="Зменшити кількість">-</button>
 						<span class="product-amount-value">2</span>
@@ -38,9 +40,10 @@
 					</section>
 				</section>
 				<section class="product-list-item">
-					<input class="product-title" value="Сир"/>
+					<input class="product-title" value="Сир" />
 					<section class="product-amount">
-						<button disabled class="product-amount-btn btn-sub inactive-product-amount-btn" data-tooltip="Зменшити кількість">-</button>
+						<button disabled class="product-amount-btn btn-sub inactive-product-amount-btn"
+							data-tooltip="Зменшити кількість">-</button>
 						<span class="product-amount-value">1</span>
 						<button class="product-amount-btn btn-add" data-tooltip="Збільшити кількість">+</button>
 					</section>
@@ -100,4 +103,5 @@
 		</div>
 	</article>
 </body>
+
 </html>
