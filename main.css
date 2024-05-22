@@ -360,7 +360,7 @@ button[data-tooltip]:not([disabled])::before {
 	font-size: 0.75rem;
 	position: absolute;	
 	left: 50%; 
-	transform: translateX(-50%);
+	transform: translateX(-50%) scale(0.005);
 	background-color: var(--purple-color);
 	color: var(--white-color);
 	padding: 5px 10px;
@@ -375,6 +375,6 @@ button[data-tooltip]:not([disabled])::before {
 button[data-tooltip]:not([disabled]):hover::before {
 	opacity: 1;
 	visibility: visible;
-	transform: translateY(-155%) translateX(-50%);
+	transform: translateY(-155%) translateX(-50%) scale(1);
 }
   
