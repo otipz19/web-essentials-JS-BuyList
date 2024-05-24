@@ -128,7 +128,7 @@ body {
 	outline-color: lightblue;
 }
 
-.inactive-product-amount-btn {
+.product-amount-btn[disabled] {
 	opacity: 50%;
 }
 
