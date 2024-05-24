@@ -7,6 +7,10 @@
 	--buttonface-color: #f0f0f0;
 }
 
+.strike-through {
+	text-decoration: line-through;
+}
+
 body {
 	font-family: Arial, Helvetica, sans-serif;
 }
@@ -39,23 +43,6 @@ body {
 	justify-content: space-between;
 	align-items: stretch;
 	border-radius: 5px;
-}
-
-.product-list-item {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: stretch;
-	width: 100%;
-	box-sizing: border-box;
-	padding: 1%;
-	border-width: 1px;
-	border-color: var(--gray-color);
-	border-bottom-style: outset;
-}
-
-.product-list-item:last-of-type {
-	border-bottom-style: none;
 }
 
 .create-product-container {
@@ -99,6 +86,23 @@ body {
 	font-size: 1.2rem;
 }
 
+.product-list-item {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: stretch;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 1%;
+	border-width: 1px;
+	border-color: var(--gray-color);
+	border-bottom-style: outset;
+}
+
+.product-list-item:last-of-type {
+	border-bottom-style: none;
+}
+
 .product-amount {
 	display: flex;
 	flex-direction: row;
@@ -122,10 +126,6 @@ body {
 
 .product-title:focus {
 	outline-color: lightblue;
-}
-
-.strike-through {
-	text-decoration: line-through;
 }
 
 .inactive-product-amount-btn {
@@ -199,15 +199,6 @@ body {
 	font-weight: bolder;
 }
 
-button {
-	text-wrap: nowrap;
-}
-
-button:active:not([disabled]) {
-	box-shadow: none;
-	transform: translateY(2px);
-}
-
 .statistics-panel-section {
 	border-width: 1px;
 	border-color: var(--gray-color);
@@ -222,6 +213,12 @@ button:active:not([disabled]) {
 
 .statistics-panel-section:last-of-type {
 	border-bottom-style: none;
+}
+
+.statistics-header {
+	font-size: 1.25rem;
+	font-weight: bolder;
+	margin: 10px 0px 10px 0px;
 }
 
 .statistics-item {
@@ -247,12 +244,6 @@ button:active:not([disabled]) {
 	border-radius: 100%;
 	color: white;
 	width: 20px;
-}
-
-.statistics-header {
-	font-size: 1.25rem;
-	font-weight: bolder;
-	margin: 10px 0px 10px 0px;
 }
 
 .badge {
@@ -347,6 +338,15 @@ button:active:not([disabled]) {
 		align-items: center;
 		gap: 10px;
 	}
+}
+
+button {
+	text-wrap: nowrap;
+}
+
+button:active:not([disabled]) {
+	box-shadow: none;
+	transform: translateY(2px);
 }
 
 button[data-tooltip] {
