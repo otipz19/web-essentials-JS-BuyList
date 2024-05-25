@@ -1,14 +1,20 @@
 let productAddForm = document.querySelector("form.create-product-bar")!;
 productAddForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    createProduct(popProductName());
+    let productName = popProductName();
+    if(productName != null){
+        createProduct(productName);
+    }
 });
 
 ["Помідори", "Печиво", "Сир"].forEach(name => createProduct(name));
 (document.querySelector(".buy-btn") as HTMLButtonElement).click();
 
-function popProductName(): string {
+function popProductName(): string | null {
     let input = productAddForm?.getElementsByTagName("input")[0] as HTMLInputElement;
+    if(input.value == ""){
+        return null;
+    }
     let productName = input.value;
     input.value = "";
     return productName;

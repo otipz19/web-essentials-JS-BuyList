@@ -1,12 +1,18 @@
 var productAddForm = document.querySelector("form.create-product-bar");
 productAddForm.addEventListener("submit", function (event) {
     event.preventDefault();
-    createProduct(popProductName());
+    var productName = popProductName();
+    if (productName != null) {
+        createProduct(productName);
+    }
 });
 ["Помідори", "Печиво", "Сир"].forEach(function (name) { return createProduct(name); });
 document.querySelector(".buy-btn").click();
 function popProductName() {
     var input = productAddForm === null || productAddForm === void 0 ? void 0 : productAddForm.getElementsByTagName("input")[0];
+    if (input.value == "") {
+        return null;
+    }
     var productName = input.value;
     input.value = "";
     return productName;
