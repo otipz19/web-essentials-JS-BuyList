@@ -1,13 +1,16 @@
 let productAddForm = document.querySelector("form.create-product-bar")!;
 productAddForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    let productName = popProductName();
+    createProduct(popProductName());
+});
+
+function createProduct(productName: string) {
     let productId = generateProductId(productName);
     createProductsListItem(productName, productId);
     createStatisticsItem(productName, productId);
-});
+}
 
-function generateProductId(productName: string): string{
+function generateProductId(productName: string): string {
     return `${productName}-${Math.random()}`;
 }
 
@@ -24,6 +27,7 @@ function createProductsListItem(productName: string, productId: string) {
     setupProductTitle(productItemSection, productName, productId);
     setupCancelBtn(productItemSection, productId);
     setupBuyBtn(productItemSection, productId);
+    setupAmountBtns(productItemSection, productId);
     addProductItemToList(productItemSection);
 }
 
@@ -70,6 +74,28 @@ function setupBuyBtn(productItemSection: HTMLElement, productId: string) {
     });
 }
 
+function setupAmountBtns(productItemSection: HTMLElement, productId: string) {
+    let updateAmount = (updater: (amount: number) => number) => {
+        let itemAmount = productItemSection.querySelector(".product-amount-value") as HTMLElement;
+        let statisticsAmount = getStatisticsItem(productId).querySelector(".amount") as HTMLElement;
+        let curAmount = parseInt(itemAmount.innerText);
+        curAmount = updater(curAmount);
+        subBtn.disabled = curAmount == 1;
+        itemAmount.innerText = curAmount.toString();
+        statisticsAmount.innerText = curAmount.toString();
+    }
+
+    let subBtn = productItemSection.querySelector(".btn-sub") as HTMLButtonElement;
+    subBtn.addEventListener("click", () => {
+        updateAmount(amount => --amount);
+    });
+
+    let addBtn = productItemSection.querySelector(".btn-add") as HTMLButtonElement;
+    addBtn.addEventListener("click", () => {
+        updateAmount(amount => ++amount);
+    });
+}
+
 function getStatisticsItem(productId: string) {
     return document.querySelector(`.statistics-item[data-product-id="${productId}"]`) as HTMLElement;
 }
@@ -79,7 +105,7 @@ function addProductItemToList(productItemSection: HTMLElement) {
     productsList.appendChild(productItemSection);
 }
 
-function getProductItemFromTemplate(): HTMLElement{
+function getProductItemFromTemplate(): HTMLElement {
     let template = document.getElementById("product-list-item-template") as HTMLTemplateElement;
     return cloneTemplateContent(template);
 }
@@ -98,10 +124,10 @@ function getStatisticsItemFromTemplate(): HTMLElement {
     return cloneTemplateContent(template);
 }
 
-function cloneTemplateContent(template: HTMLTemplateElement): HTMLElement{
+function cloneTemplateContent(template: HTMLTemplateElement): HTMLElement {
     return template.content?.firstElementChild?.cloneNode(true) as HTMLElement;
 }
 
-function setProductId(element: HTMLElement, id: string){
+function setProductId(element: HTMLElement, id: string) {
     element.setAttribute("data-product-id", id);
 }

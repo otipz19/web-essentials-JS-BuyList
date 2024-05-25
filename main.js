@@ -1,11 +1,13 @@
 var productAddForm = document.querySelector("form.create-product-bar");
 productAddForm.addEventListener("submit", function (event) {
     event.preventDefault();
-    var productName = popProductName();
+    createProduct(popProductName());
+});
+function createProduct(productName) {
     var productId = generateProductId(productName);
     createProductsListItem(productName, productId);
     createStatisticsItem(productName, productId);
-});
+}
 function generateProductId(productName) {
     return "".concat(productName, "-").concat(Math.random());
 }
@@ -21,6 +23,7 @@ function createProductsListItem(productName, productId) {
     setupProductTitle(productItemSection, productName, productId);
     setupCancelBtn(productItemSection, productId);
     setupBuyBtn(productItemSection, productId);
+    setupAmountBtns(productItemSection, productId);
     addProductItemToList(productItemSection);
 }
 function setupProductTitle(productItemSection, productName, productId) {
@@ -58,6 +61,25 @@ function setupBuyBtn(productItemSection, productId) {
         var parentSection = document.getElementById(isBought ? "bought-section" : "not-bought-section");
         (_a = statisticsItem.firstElementChild) === null || _a === void 0 ? void 0 : _a.classList.toggle("strike-through");
         parentSection.appendChild(statisticsItem);
+    });
+}
+function setupAmountBtns(productItemSection, productId) {
+    var updateAmount = function (updater) {
+        var itemAmount = productItemSection.querySelector(".product-amount-value");
+        var statisticsAmount = getStatisticsItem(productId).querySelector(".amount");
+        var curAmount = parseInt(itemAmount.innerText);
+        curAmount = updater(curAmount);
+        subBtn.disabled = curAmount == 1;
+        itemAmount.innerText = curAmount.toString();
+        statisticsAmount.innerText = curAmount.toString();
+    };
+    var subBtn = productItemSection.querySelector(".btn-sub");
+    subBtn.addEventListener("click", function () {
+        updateAmount(function (amount) { return --amount; });
+    });
+    var addBtn = productItemSection.querySelector(".btn-add");
+    addBtn.addEventListener("click", function () {
+        updateAmount(function (amount) { return ++amount; });
     });
 }
 function getStatisticsItem(productId) {
