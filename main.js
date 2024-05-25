@@ -18,13 +18,44 @@ function popProductName() {
 function createProductsListItem(productName, productId) {
     var productItemSection = getProductItemFromTemplate();
     setProductId(productItemSection, productId);
+    setProductTitle(productItemSection, productName);
+    setupCancelBtn(productItemSection, productId);
+    setupBuyBtn(productItemSection, productId);
+    addProductItemToList(productItemSection);
+}
+function setProductTitle(productItemSection, productName) {
     var productTitle = productItemSection.querySelector("input.product-title");
     productTitle.value = productName;
+}
+function setupCancelBtn(productItemSection, productId) {
     var cancelBtn = productItemSection.querySelector("button.cancel-btn");
-    setProductId(cancelBtn, productId);
     cancelBtn.addEventListener("click", function () {
         document.querySelectorAll("[data-product-id=\"".concat(productId, "\"]")).forEach(function (e) { return e.remove(); });
     });
+}
+function setupBuyBtn(productItemSection, productId) {
+    var buyBtn = productItemSection.querySelector(".buy-btn");
+    buyBtn.addEventListener("click", function () {
+        var _a;
+        var isBought = buyBtn.getAttribute("data-product-bought") === "false";
+        buyBtn.setAttribute("data-product-bought", isBought.toString());
+        buyBtn.innerText = isBought ? "Не куплено" : "Куплено";
+        buyBtn.setAttribute("data-tooltip", isBought ? "Відмінити покупку" : "Підтвердити покупку");
+        var productTitle = productItemSection.querySelector(".product-title");
+        productTitle.disabled = isBought;
+        productTitle.classList.toggle("strike-through");
+        var amountBtns = productItemSection.querySelectorAll(".product-amount-btn");
+        amountBtns.forEach(function (btn) { return btn.style.display = isBought ? "none" : "block"; });
+        var cancelBtn = productItemSection.querySelector(".cancel-btn");
+        cancelBtn.style.display = isBought ? "none" : "block";
+        var statisticsItem = document.querySelector(".statistics-item[data-product-id=\"".concat(productId, "\"]"));
+        statisticsItem.remove();
+        var parentSection = document.getElementById(isBought ? "bought-section" : "not-bought-section");
+        (_a = statisticsItem.firstElementChild) === null || _a === void 0 ? void 0 : _a.classList.toggle("strike-through");
+        parentSection.appendChild(statisticsItem);
+    });
+}
+function addProductItemToList(productItemSection) {
     var productsList = document.getElementsByClassName("products-list")[0];
     productsList.appendChild(productItemSection);
 }
