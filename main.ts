@@ -2,9 +2,14 @@ let productAddForm = document.querySelector("form.create-product-bar")!;
 productAddForm.addEventListener("submit", (event) => {
     event.preventDefault();
     let productName = popProductName();
-    createProductsListItem(productName);
-    createStatisticsItem(productName);
+    let productId = generateProductId(productName);
+    createProductsListItem(productName, productId);
+    createStatisticsItem(productName, productId);
 });
+
+function generateProductId(productName: string): string{
+    return `${productName}-${Math.random()}`;
+}
 
 function popProductName(): string {
     let input = productAddForm?.getElementsByTagName("input")[0] as HTMLInputElement;
@@ -13,10 +18,16 @@ function popProductName(): string {
     return productName;
 }
 
-function createProductsListItem(productName: string) {
+function createProductsListItem(productName: string, productId: string) {
     let productItemSection = getProductItemFromTemplate();
+    setProductId(productItemSection, productId);
     let productTitle = productItemSection.querySelector("input.product-title") as HTMLInputElement;
     productTitle.value = productName;
+    let cancelBtn = productItemSection.querySelector("button.cancel-btn") as HTMLButtonElement;
+    setProductId(cancelBtn, productId);
+    cancelBtn.addEventListener("click", () => {
+        document.querySelectorAll(`[data-product-id="${productId}"]`).forEach(e => e.remove());
+    });
     let productsList = document.getElementsByClassName("products-list")[0]!;
     productsList.appendChild(productItemSection);
 }
@@ -26,8 +37,9 @@ function getProductItemFromTemplate(): HTMLElement{
     return cloneTemplateContent(template);
 }
 
-function createStatisticsItem(productName: string) {
+function createStatisticsItem(productName: string, productId: string) {
     let statisticsItem = getStatisticsItemFromTemplate();
+    setProductId(statisticsItem, productId);
     let name = (statisticsItem.querySelectorAll("span > span")[0] as HTMLElement);
     name.innerText = productName;
     let statisticsSection = document.getElementById("not-bought-section") as HTMLElement;
@@ -40,5 +52,9 @@ function getStatisticsItemFromTemplate(): HTMLElement {
 }
 
 function cloneTemplateContent(template: HTMLTemplateElement): HTMLElement{
-    return template.content.cloneNode(true) as HTMLElement;
+    return template.content?.firstElementChild?.cloneNode(true) as HTMLElement;
+}
+
+function setProductId(element: HTMLElement, id: string){
+    element.setAttribute("data-product-id", id);
 }
