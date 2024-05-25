@@ -4,6 +4,16 @@ productAddForm.addEventListener("submit", (event) => {
     createProduct(popProductName());
 });
 
+["Помідори", "Печиво", "Сир"].forEach(name => createProduct(name));
+(document.querySelector(".buy-btn") as HTMLButtonElement).click();
+
+function popProductName(): string {
+    let input = productAddForm?.getElementsByTagName("input")[0] as HTMLInputElement;
+    let productName = input.value;
+    input.value = "";
+    return productName;
+}
+
 function createProduct(productName: string) {
     let productId = generateProductId(productName);
     createProductsListItem(productName, productId);
@@ -12,13 +22,6 @@ function createProduct(productName: string) {
 
 function generateProductId(productName: string): string {
     return `${productName}-${Math.random()}`;
-}
-
-function popProductName(): string {
-    let input = productAddForm?.getElementsByTagName("input")[0] as HTMLInputElement;
-    let productName = input.value;
-    input.value = "";
-    return productName;
 }
 
 function createProductsListItem(productName: string, productId: string) {

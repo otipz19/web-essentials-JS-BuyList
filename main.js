@@ -3,6 +3,14 @@ productAddForm.addEventListener("submit", function (event) {
     event.preventDefault();
     createProduct(popProductName());
 });
+["Помідори", "Печиво", "Сир"].forEach(function (name) { return createProduct(name); });
+document.querySelector(".buy-btn").click();
+function popProductName() {
+    var input = productAddForm === null || productAddForm === void 0 ? void 0 : productAddForm.getElementsByTagName("input")[0];
+    var productName = input.value;
+    input.value = "";
+    return productName;
+}
 function createProduct(productName) {
     var productId = generateProductId(productName);
     createProductsListItem(productName, productId);
@@ -10,12 +18,6 @@ function createProduct(productName) {
 }
 function generateProductId(productName) {
     return "".concat(productName, "-").concat(Math.random());
-}
-function popProductName() {
-    var input = productAddForm === null || productAddForm === void 0 ? void 0 : productAddForm.getElementsByTagName("input")[0];
-    var productName = input.value;
-    input.value = "";
-    return productName;
 }
 function createProductsListItem(productName, productId) {
     var productItemSection = getProductItemFromTemplate();
