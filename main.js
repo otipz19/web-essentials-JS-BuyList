@@ -18,14 +18,19 @@ function popProductName() {
 function createProductsListItem(productName, productId) {
     var productItemSection = getProductItemFromTemplate();
     setProductId(productItemSection, productId);
-    setProductTitle(productItemSection, productName);
+    setupProductTitle(productItemSection, productName, productId);
     setupCancelBtn(productItemSection, productId);
     setupBuyBtn(productItemSection, productId);
     addProductItemToList(productItemSection);
 }
-function setProductTitle(productItemSection, productName) {
+function setupProductTitle(productItemSection, productName, productId) {
     var productTitle = productItemSection.querySelector("input.product-title");
     productTitle.value = productName;
+    productTitle.addEventListener("change", function () {
+        var statisticsItem = getStatisticsItem(productId);
+        var name = statisticsItem.firstElementChild;
+        name.innerText = productTitle.value;
+    });
 }
 function setupCancelBtn(productItemSection, productId) {
     var cancelBtn = productItemSection.querySelector("button.cancel-btn");
@@ -48,12 +53,15 @@ function setupBuyBtn(productItemSection, productId) {
         amountBtns.forEach(function (btn) { return btn.style.display = isBought ? "none" : "block"; });
         var cancelBtn = productItemSection.querySelector(".cancel-btn");
         cancelBtn.style.display = isBought ? "none" : "block";
-        var statisticsItem = document.querySelector(".statistics-item[data-product-id=\"".concat(productId, "\"]"));
+        var statisticsItem = getStatisticsItem(productId);
         statisticsItem.remove();
         var parentSection = document.getElementById(isBought ? "bought-section" : "not-bought-section");
         (_a = statisticsItem.firstElementChild) === null || _a === void 0 ? void 0 : _a.classList.toggle("strike-through");
         parentSection.appendChild(statisticsItem);
     });
+}
+function getStatisticsItem(productId) {
+    return document.querySelector(".statistics-item[data-product-id=\"".concat(productId, "\"]"));
 }
 function addProductItemToList(productItemSection) {
     var productsList = document.getElementsByClassName("products-list")[0];

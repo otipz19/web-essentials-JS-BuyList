@@ -21,15 +21,20 @@ function popProductName(): string {
 function createProductsListItem(productName: string, productId: string) {
     let productItemSection = getProductItemFromTemplate();
     setProductId(productItemSection, productId);
-    setProductTitle(productItemSection, productName);
+    setupProductTitle(productItemSection, productName, productId);
     setupCancelBtn(productItemSection, productId);
     setupBuyBtn(productItemSection, productId);
     addProductItemToList(productItemSection);
 }
 
-function setProductTitle(productItemSection: HTMLElement, productName: string) {
+function setupProductTitle(productItemSection: HTMLElement, productName: string, productId: string) {
     let productTitle = productItemSection.querySelector("input.product-title") as HTMLInputElement;
     productTitle.value = productName;
+    productTitle.addEventListener("change", () => {
+        let statisticsItem = getStatisticsItem(productId);
+        let name = statisticsItem.firstElementChild as HTMLElement;
+        name.innerText = productTitle.value;
+    });
 }
 
 function setupCancelBtn(productItemSection: HTMLElement, productId: string) {
@@ -57,12 +62,16 @@ function setupBuyBtn(productItemSection: HTMLElement, productId: string) {
         let cancelBtn = productItemSection.querySelector(".cancel-btn") as HTMLElement;
         cancelBtn.style.display = isBought ? "none" : "block";
 
-        let statisticsItem = document.querySelector(`.statistics-item[data-product-id="${productId}"]`) as HTMLElement;
+        let statisticsItem = getStatisticsItem(productId);
         statisticsItem.remove();
         let parentSection = document.getElementById(isBought ? "bought-section" : "not-bought-section")!;
         statisticsItem.firstElementChild?.classList.toggle("strike-through");
         parentSection.appendChild(statisticsItem);
     });
+}
+
+function getStatisticsItem(productId: string) {
+    return document.querySelector(`.statistics-item[data-product-id="${productId}"]`) as HTMLElement;
 }
 
 function addProductItemToList(productItemSection: HTMLElement) {
