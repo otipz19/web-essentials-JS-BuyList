@@ -128,10 +128,6 @@ body {
 	outline-color: lightblue;
 }
 
-.product-amount-btn[disabled] {
-	opacity: 50%;
-}
-
 .product-amount-value {
 	background-color: var(--buttonface-color);
 	color: var(--dark-gray-color);
@@ -144,6 +140,10 @@ body {
 	padding: 5px;
 	border-radius: 5px;
 	font-weight: bold;
+}
+
+.product-amount-btn[disabled] {
+	opacity: 50%;
 }
 
 .product-amount-btn {
@@ -359,7 +359,7 @@ button[data-tooltip]:not([disabled])::before {
 	position: absolute;
 	left: 50%;
 	transform: translateX(-50%) scale(0.005);
-	background-color: var(--purple-color);
+	background-color: var(--purple-color);	
 	color: var(--white-color);
 	padding: 5px 10px;
 	border-radius: 10px;
