@@ -40,7 +40,12 @@ function setupProductTitle(productItemSection, productName, productId) {
     productTitle.addEventListener("change", function () {
         var statisticsItem = getStatisticsItem(productId);
         var name = statisticsItem.firstElementChild;
-        name.innerText = productTitle.value;
+        if (productTitle.value != "") {
+            name.innerText = productTitle.value;
+        }
+        else {
+            productTitle.value = name.innerText;
+        }
     });
 }
 function setupCancelBtn(productItemSection, productId) {

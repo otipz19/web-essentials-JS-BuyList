@@ -46,7 +46,11 @@ function setupProductTitle(productItemSection: HTMLElement, productName: string,
     productTitle.addEventListener("change", () => {
         let statisticsItem = getStatisticsItem(productId);
         let name = statisticsItem.firstElementChild as HTMLElement;
-        name.innerText = productTitle.value;
+        if(productTitle.value != ""){
+            name.innerText = productTitle.value;
+        } else {
+            productTitle.value = name.innerText;
+        }
     });
 }
 
@@ -105,7 +109,7 @@ function setupAmountBtns(productItemSection: HTMLElement, productId: string) {
     });
 }
 
-function getStatisticsItem(productId: string) {
+function getStatisticsItem(productId: string) : HTMLElement {
     return document.querySelector(`.statistics-item[data-product-id="${productId}"]`) as HTMLElement;
 }
 
