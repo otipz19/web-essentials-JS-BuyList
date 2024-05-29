@@ -17,81 +17,19 @@
 					<button type="submit" id="submit-create" data-tooltip="Додати товар">Додати</button>
 				</form>
 			</section>
-			<section>
-				<section class="product-list-item">
-					<input disabled class="product-title strike-through" value="Помідори" />
-					<section class="product-amount">
-						<span class="product-amount-value">2</span>
-					</section>
-					<section class="buy-btn-section">
-						<button class="buy-btn" data-tooltip="Відмінити покупку">Не куплено</button>
-					</section>
-				</section>
-				<section class="product-list-item">
-					<input class="product-title" value="Печиво" />
-					<section class="product-amount">
-						<button class="product-amount-btn btn-sub" data-tooltip="Зменшити кількість">-</button>
-						<span class="product-amount-value">2</span>
-						<button class="product-amount-btn btn-add" data-tooltip="Збільшити кількість">+</button>
-					</section>
-					<section class="buy-btn-section">
-						<button class="buy-btn" data-tooltip="Підтвердити покупку">Куплено</button>
-						<button class="cancel-btn" data-tooltip="Видалити товар">x</button>
-					</section>
-				</section>
-				<section class="product-list-item">
-					<input class="product-title" value="Сир" />
-					<section class="product-amount">
-						<button disabled class="product-amount-btn btn-sub"
-							data-tooltip="Зменшити кількість">-</button>
-						<span class="product-amount-value">1</span>
-						<button class="product-amount-btn btn-add" data-tooltip="Збільшити кількість">+</button>
-					</section>
-					<section class="buy-btn-section">
-						<button class="buy-btn" data-tooltip="Підтвердити покупку">Куплено</button>
-						<button class="cancel-btn" data-tooltip="Видалити товар">x</button>
-					</section>
-				</section>
+			<section class="products-list">
 			</section>
 		</section>
 		<section class="statistics-panel shopping-cart-section">
 			<section class="statistics-panel-section">
 				<p class="statistics-header">Залишилося</p>
 			</section>
-			<section class="statistics-panel-section">
-				<span class="statistics-item">
-					Печиво
-					<span class="amount">2</span>
-				</span>
-				<span class="statistics-item">
-					Сир
-					<span class="amount">1</span>
-				</span>
-				<span class="statistics-item">
-					Сир
-					<span class="amount">1</span>
-				</span>
-				<span class="statistics-item">
-					Сир
-					<span class="amount">1</span>
-				</span>
-				<span class="statistics-item">
-					Сир
-					<span class="amount">1</span>
-				</span>
-				<span class="statistics-item">
-					Сир
-					<span class="amount">1</span>
-				</span>
+			<section id="not-bought-section" class="statistics-panel-section">
 			</section>
 			<section class="statistics-panel-section">
 				<p class="statistics-header">Куплено</p>
 			</section>
-			<section class="statistics-panel-section">
-				<span class="statistics-item">
-					<span class="strike-through">Помідори</span>
-					<span class="amount">2</span>
-				</span>
+			<section id="bought-section" class="statistics-panel-section">
 			</section>
 		</section>
 	</article>
@@ -102,6 +40,29 @@
 			<label>Oleksandr Tkachenko</label>
 		</div>
 	</article>
+
+	<template id="product-list-item-template">
+		<section class="product-list-item">
+			<input class="product-title" value="[product-name]" />
+			<section class="product-amount">
+				<button disabled class="product-amount-btn btn-sub" data-tooltip="Зменшити кількість">-</button>
+				<span class="product-amount-value">1</span>
+				<button class="product-amount-btn btn-add" data-tooltip="Збільшити кількість">+</button>
+			</section>
+			<section class="buy-btn-section">
+				<button class="buy-btn" data-product-bought="false" data-tooltip="Підтвердити покупку">Куплено</button>
+				<button class="cancel-btn" data-tooltip="Видалити товар">x</button>
+			</section>
+		</section>
+	</template>
+	<template id="statistics-item-template">
+		<span class="statistics-item">
+			<span>[product-name]</span>
+			<span class="amount">1</span>
+		</span>
+	</template>
+
+	<script src="dist/bundle.js"></script>
 </body>
 
 </html>
