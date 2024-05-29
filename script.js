@@ -46,7 +46,7 @@ function createProduct(productId, productData) {
     updateAmount(productId, productItemSection, function (amount) { return productData.amount; });
 }
 function generateProductId() {
-    return Math.random().toString();
+    return uuidv4().toString();
 }
 function createProductsListItem(productData, productId) {
     var productItemSection = getProductItemFromTemplate();

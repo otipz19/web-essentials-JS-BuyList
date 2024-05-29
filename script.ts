@@ -1,3 +1,5 @@
+import {v4 as uuidv4} from 'uuid';
+
 const PRODUCT_TO_DATA_LOCAL_STORAGE_KEY = "productNameToData";
 const ID_TO_PRODUCT_LOCAL_STORAGE_KEY = "productIdToName";
 
@@ -51,7 +53,7 @@ function createProduct(productId: string, productData: ProductData) {
 }
 
 function generateProductId(): string {
-    return Math.random().toString();
+    return uuidv4().toString();
 }
 
 function createProductsListItem(productData: ProductData, productId: string): HTMLElement {
